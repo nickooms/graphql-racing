@@ -1,27 +1,8 @@
 import { PubSub } from 'graphql-subscriptions';
 import { withFilter } from 'graphql-subscriptions';
 
-const channels = [{
-  id: '1',
-  name: 'soccer',
-  messages: [{
-    id: '1',
-    text: 'soccer is football',
-  }, {
-    id: '2',
-    text: 'hello soccer world cup',
-  }]
-}, {
-  id: '2',
-  name: 'baseball',
-  messages: [{
-    id: '3',
-    text: 'baseball is life',
-  }, {
-    id: '4',
-    text: 'hello baseball world series',
-  }]
-}];
+import channels from './resolvers/channels';
+import Query from './resolvers/Query';
 
 let nextId = 3;
 let nextMessageId = 5;
@@ -29,14 +10,7 @@ let nextMessageId = 5;
 const pubsub = new PubSub();
 
 export const resolvers = {
-  Query: {
-    channels: () => {
-      return channels;
-    },
-    channel: (root, { id }) => {
-      return channels.find(channel => channel.id === id);
-    },
-  },
+  Query,
   Mutation: {
     addChannel: (root, args) => {
       const newChannel = { id: String(nextId++), messages: [], name: args.name };
