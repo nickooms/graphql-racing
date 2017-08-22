@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMessage renders appropriately 1`] = `
+<div
+  className="messageInput"
+>
+  <input
+    onKeyUp={[Function]}
+    placeholder="New message"
+    type="text"
+  />
+</div>
+`;

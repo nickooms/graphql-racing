@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelPreview error renders appropriately 1`] = `
+<p>
+  ERROR
+</p>
+`;
+
+exports[`ChannelPreview renders appropriately 1`] = `
+<div>
+  <div
+    className="channelName"
+  >
+    soccer
+  </div>
+  <div>
+    Loading Messages
+  </div>
+</div>
+`;

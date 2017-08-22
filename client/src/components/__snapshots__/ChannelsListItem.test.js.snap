@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelsListItem renders appropriately 1`] = `
+<div
+  className="channel "
+>
+  <a
+    href="channel/1"
+    onClick={[Function]}
+  >
+    soccer
+  </a>
+</div>
+`;

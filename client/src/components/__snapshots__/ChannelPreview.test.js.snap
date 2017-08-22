@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelPreview error renders appropriately 1`] = `
+<p>
+  Loading ...
+</p>
+`;
+
+exports[`ChannelPreview renders appropriately 1`] = `
+<p>
+  Loading ...
+</p>
+`;

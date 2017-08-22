@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageListItem renders normal appropriately 1`] = `
+<div
+  className="message "
+>
+  normal
+</div>
+`;
+
+exports[`MessageListItem renders optimistic appropriately 1`] = `
+<div
+  className="message optimistic"
+>
+  optimistic
+</div>
+`;

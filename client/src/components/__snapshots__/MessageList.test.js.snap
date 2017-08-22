@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageList renders 0 messages appropriately 1`] = `
+<div
+  className="messagesList"
+>
+  <div
+    className="messageInput"
+  >
+    <input
+      onKeyUp={[Function]}
+      placeholder="New message"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`MessageList renders 1 messages appropriately 1`] = `
+<div
+  className="messagesList"
+>
+  <div
+    className="message "
+  >
+    message
+  </div>
+  <div
+    className="messageInput"
+  >
+    <input
+      onKeyUp={[Function]}
+      placeholder="New message"
+      type="text"
+    />
+  </div>
+</div>
+`;
