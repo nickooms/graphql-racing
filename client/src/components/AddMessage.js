@@ -6,6 +6,13 @@ import { tempId, findById } from '../util';
 import query from '../query/channelDetails';
 import mutation from '../mutation/addMessage';
 
+const update = variables => (store, { data: { addMessage } }) => {
+  const data = store.readQuery({ query, variables });
+  const { messages } = data.channel;
+  if (!messages.find(findById(addMessage.id))) messages.push(addMessage);
+  store.writeQuery({ query, variables, data });
+};
+
 const AddMessage = ({ mutate, match: { params: { channelId } } }) => {
   const onKeyUp = ({ keyCode, target }) => {
     if (keyCode === 13) {
@@ -15,13 +22,7 @@ const AddMessage = ({ mutate, match: { params: { channelId } } }) => {
         optimisticResponse: {
           addMessage: { __typename: 'Message', id: tempId(), text },
         },
-        update: (store, { data: { addMessage } }) => {
-          const variables = { channelId };
-          const data = store.readQuery({ query, variables });
-          const { messages } = data.channel;
-          if (!messages.find(findById(addMessage.id))) messages.push(addMessage);
-          store.writeQuery({ query, variables, data });
-        },
+        update: update({ channelId }),
       });
       target.value = '';
     }

@@ -5,6 +5,12 @@ import { tempId } from '../util';
 import query from '../query/channelsList';
 import mutation from '../mutation/addChannel';
 
+const update = variables => (store, { data: { addChannel } }) => {
+  const data = store.readQuery({ query, variables });
+  data.channels.push(addChannel);
+  store.writeQuery({ query, variables, data });
+};
+
 const AddChannel = ({ mutate }) => {
   const onKeyUp = ({ keyCode, target }) => {
     if (keyCode === 13) {
@@ -14,11 +20,7 @@ const AddChannel = ({ mutate }) => {
         optimisticResponse: {
           addChannel: { __typename: 'Channel', id: tempId(), name },
         },
-        update: (store, { data: { addChannel } }) => {
-          const data = store.readQuery({ query });
-          data.channels.push(addChannel);
-          store.writeQuery({ query, data });
-        },
+        update: update({}),
       });
       target.value = '';
     }
