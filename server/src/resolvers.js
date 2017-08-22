@@ -43,12 +43,12 @@ export const resolvers = {
       channels.push(newChannel);
       return newChannel;
     },
-    addMessage: (root, { message }) => {
-      const channel = channels.find(channel => channel.id === message.channelId);
+    addMessage: (root, { message: { channelId, text } }) => {
+      const channel = channels.find(channel => channel.id === channelId);
       if (!channel) throw new Error('Channel does not exist');
-      const messageAdded = { id: String(nextMessageId++), text: message.text };
+      const messageAdded = { id: String(nextMessageId++), text };
       channel.messages.push(messageAdded);
-      pubsub.publish('messageAdded', { messageAdded, channelId: message.channelId });
+      pubsub.publish('messageAdded', { messageAdded, channelId });
       return messageAdded;
     },
   },
