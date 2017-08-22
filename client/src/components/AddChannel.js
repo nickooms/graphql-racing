@@ -7,7 +7,6 @@ import mutation from '../mutation/addChannel';
 
 const update = variables => (store, { data: { addChannel } }) => {
   const data = store.readQuery({ query, variables });
-  // data.channels.push(addChannel);
   const list = data.channels;
   if (!list.find(findById(addChannel.id))) list.push(addChannel);
   store.writeQuery({ query, variables, data });
